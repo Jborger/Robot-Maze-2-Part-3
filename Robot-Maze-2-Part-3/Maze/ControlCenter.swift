@@ -47,19 +47,20 @@ class ControlCenter {
         if isThreeWayJunction && robotIsBlocked {
             randomlyRotateRightOrLeft(myRobot)
         }
+        
+        // TODO: If the robot encounters a three way junction and there is NO wall ahead, it should continue straight or rotate (you need to write this else-if statement)
         else if isThreeWayJunction && !robotIsBlocked{
             continueStraightOrRotate(myRobot, wallInfo: myWallInfo)
         }
-        
-        // TODO: If the robot encounters a three way junction and there is NO wall ahead, it should continue straight or rotate (you need to write this else-if statement)
-        
         
         // Step 2.3b
         // Two-way Path - else-if statements
         
         // TODO: If the robot encounters a two way path and there is NO wall ahead it should continue forward.
         else if isTwoWayPath && !robotIsBlocked {
-            continueStraightOrRotate(myRobot, wallInfo: myWallInfo)
+           //continueStraightOrRotate(myRobot, wallInfo: myWallInfo)
+            myRobot.move()
+            
         }
         
         // TODO: If the robot encounters a two way path and there IS a wall ahead, it should randomly rotate.
@@ -71,19 +72,16 @@ class ControlCenter {
         
         // Step 2.3c
         // Dead end - else-if statements
-        
-        if !isDeadEnd && !robotIsBlocked {
-            myRobot.rotateRight()
-        } else if isDeadEnd {
-            randomlyRotateRightOrLeft(myRobot)
-            
-            // TODO: If the robot encounters a dead end and there is NO wall ahead it should move forward.
-            
-            // TODO: If the robot encounters a dead end and there IS a wall ahead it should rotateRight().
+        if isDeadEnd {
+            if robotIsBlocked {
+                myRobot.rotateRight()
+            }
+            myRobot.move()
         }
     }
+    
+
     func previousMoveIsFinished(robot: ComplexRobotObject) {
             self.moveComplexRobot(robot)
-    }
-    
+}
 }

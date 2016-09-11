@@ -75,6 +75,6 @@ extension ControlCenter {
         
         // TODO: Return a tuple representing the bools for top, right, down & left, and the number of walls
         // This tuple is a placeholder
-        return (isWallUp, isWallBottom, isWallLeft, isWallRight, numberOfWalls)
+        return (isWallUp, isWallRight, isWallBottom, isWallLeft, numberOfWalls)
     }
 }
